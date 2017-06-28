@@ -1,0 +1,26 @@
+<h1><%= @movie.title%></h1>
+
+<h3>Movie Info</h3>
+<p><%= @movie.summary %></p>
+<p><strong>Rating: </strong><%= @movie.rating %></p>
+<p><strong>Genre: </strong><%= @movie.genre %></p>
+<p><strong>Directed By: </strong><%= @movie.director %></p>
+<p><strong>Written By: </strong><%= @movie.writer %></p>
+<p><strong>In Theaters: </strong><%= @movie.released %></p>
+<p><strong>Runtime: </strong><%= @movie.runtime %> minutes</p>
+<p><strong>Studio: </strong><%= @movie.studio %></p>
+
+<p><%= link_to "Edit", edit_movie_path(@movie) %></p>
+<p><%= link_to "Delete", movie_path(@movie),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+
+<ul>
+  <% @movie.reviews.each do |review| %>
+  <li><%=link_to review.author, movie_review_path(@movie, review) %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to "New Review", new_movie_review_path(@movie) %></p>
+
+<p><%= link_to "Return to Movies", movies_path %></p>
