@@ -1,8 +1,9 @@
 <h1>Movies</h1>
 
 <ul>
-  <%@movies.each do |movie|%>
-  <li><%=link_to movie.title, movie_path(movie)%></li>
+  <% @movies.each do |movie| %>
+  <% movieAndRating = movie.averate_rating.to_s + "% " + movie.title %>q
+  <li><%= link_to movieAndRating, movie_path(movie)%></li>
   <% end %>
 </ul>
 

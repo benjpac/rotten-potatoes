@@ -1,4 +1,4 @@
-<h1><%= @movie.title%></h1>
+<h1><%= @movie.title %> <%= @movie.averate_rating %>%</h1>
 
 <h3>Movie Info</h3>
 <p><%= @movie.summary %></p>
@@ -17,7 +17,8 @@
 
 <ul>
   <% @movie.reviews.each do |review| %>
-  <li><%=link_to review.author, movie_review_path(@movie, review) %></li>
+  <% ratingAndAuthor = review.rating.to_s + " " + review.author %>
+  <li><%= link_to ratingAndAuthor, movie_review_path(@movie, review) %></li>
   <% end %>
 </ul>
 

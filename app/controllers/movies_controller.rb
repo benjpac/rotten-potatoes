@@ -20,6 +20,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @reviews = Review.all
+    @movie.averate_rating = @movie.getAverageRating
   end
 
   def edit
